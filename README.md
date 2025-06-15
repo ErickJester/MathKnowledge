@@ -1,6 +1,6 @@
 # Maths Knowledge
 
-Este proyecto es una **aplicación web educativa** desarrollada con PHP y MySQL, pensada para subir y consultar archivos PDF (recursos académicos). A continuación encontrarás un manual de instalación y solución de problemas para garantizar que la funcionalidad de subida de PDFs funcione correctamente al clonar este repositorio.
+Este proyecto es una **aplicación web educativa** desarrollada con PHP y MySQL, pensada para subir y consultar recursos académicos. A continuación encontrarás un manual de instalación y solución de problemas para garantizar que la funcionalidad de subida de PDFs funcione correctamente al clonar este repositorio.
 
 ---
 
