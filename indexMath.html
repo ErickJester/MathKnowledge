@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maths Knowledge</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Estilos del sidebar fijo (no tocar) -->
+  <link rel="stylesheet" href="Styles/inicio.css" />
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- Botón hamburguesa -->
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">
+    <div class="hamburger"></div>
+  </button>
+
+  <!-- Sidebar colapsable -->
+  <div class="sidebar">
+    <h2>🔢 Maths Knowledge</h2>
+    <ul>
+      <li class="active">
+        <a href="index.html">
+          <span>🏠</span><span class="label">Pagina Principal</span>
+        </a>
+      </li>
+      <li>
+        <a href="Pages/ver-pdfs.html">
+          <span>📖</span><span class="label">Ver PDFs</span>
+        </a>
+      </li>
+      <li>
+        <a href="Pages/login.php">
+          <span>🔑</span><span class="label">Inicio de sesión</span>
+        </a>
+      </li>
+      <li>
+        <a href="Pages/subir-pdf.php">
+          <span>📤</span><span class="label">Subir PDF Nuevo</span>
+        </a>
+      </li>
+      <li>
+        <a href="Pages/pdf-viewer.html">
+          <span>🗎</span><span class="label">PDF Viewer</span>
+        </a>
+      </li>
+      <li>
+        <a href="Pages/admin.html">
+          <span>⚙️</span><span class="label">Administration</span>
+        </a>
+      </li>
+      <!-- Siempre al fondo -->
+      <li>
+        <a href="Pages/logout.php">
+          <span>🚪</span><span class="label">Cerrar sesión</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal + aside -->
+  <div class="content">
+    <!-- Encabezado de bienvenida -->
+    <header>
+      <h1>Bienvenido a Maths Knowledge</h1>
+      <p>Explora nuestros recursos y mejora tus habilidades en matemáticas.</p>
+    </header>
+
+    <div class="container">
+      <!-- Secciones principales -->
+      <main>
+        <div class="card">
+          <h2>Próximos Eventos</h2>
+          <p>Espacio para imágenes y descripción de eventos y actividades de Maths Knowledge.</p>
+        </div>
+        <div class="card">
+          <h2>Novedades</h2>
+          <p>Últimas incorporaciones de contenido y materiales destacados.</p>
+        </div>
+      </main>
+
+      <!-- Barra lateral derecha -->
+      <aside>
+        <div class="card">
+          <h3>Información Educativa</h3>
+          <p>Es un texto de ejemplo</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Script de colapso del sidebar -->
+  <script>
+    document
+      .getElementById('sidebar-toggle')
+      .addEventListener('click', () => {
+        document.documentElement.classList.toggle('sidebar-collapsed');
+      });
+  </script>
+</body>
+</html>

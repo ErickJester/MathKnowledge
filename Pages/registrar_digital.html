@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Medio Digital</title>
-    <link rel="stylesheet" href="../Styles/regist_style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrar Medio Digital</title>
+  <!-- Adaptar ruta de CSS según tu proyecto -->
+  <link rel="stylesheet" href="../Styles/regist_style.css">
 </head>
 <body>
-    <h1>Registro de Medio Digital</h1>
-    <form action="Funciones/procesar_digital.php" method="POST">
-        <label>Título:</label><br>
-        <input type="text" name="titulo" required><br>
+  <h1>Registro de Medio Digital</h1>
+  <form action="Funciones/procesar_digital.php" method="POST" enctype="multipart/form-data">
+    <label for="titulo">Título:</label><br>
+    <input type="text" id="titulo" name="titulo" required><br>
 
-        <label>Autor:</label><br>
-        <input type="text" name="autor" required><br>
+    <label for="autor">Autor:</label><br>
+    <input type="text" id="autor" name="autor" required><br>
 
-        <label>Fecha de Registro:</label><br>
-        <input type="date" name="fecha_registro" required><br>
+    <label for="fecha_registro">Fecha de Registro:</label><br>
+    <input type="date" id="fecha_registro" name="fecha_registro" required><br>
 
-        <label>Cantidad:</label><br>
-        <input type="number" name="cantidad" min="1" required><br>
+    <label for="cantidad">Cantidad:</label><br>
+    <input type="number" id="cantidad" name="cantidad" min="1" required><br>
 
-        <label>Género:</label><br>
-        <input type="text" name="genero" required><br><br>
+    <label for="genero">Género:</label><br>
+    <input type="text" id="genero" name="genero" required><br>
 
-        <input type="submit" value="Registrar Medio Digital">
-    </form>
+    <!-- Nuevo campo para el archivo PDF -->
+    <label for="pdf_file">Archivo PDF:</label><br>
+    <input type="file" id="pdf_file" name="pdf_file" accept="application/pdf" required><br><br>
+
+    <button type="submit">Registrar Medio Digital</button>
+  </form>
 </body>
 </html>

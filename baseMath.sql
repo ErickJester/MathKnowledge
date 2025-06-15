@@ -1,5 +1,6 @@
-CREATE DATABASE base_biblioteca2;
-USE base_biblioteca2;
+CREATE DATABASE baseMath;
+USE baseMath;
+-- Creación de tablas para la base de datos baseMath
 
 -- Tipos de usuario
 CREATE TABLE Tipo_usuario (
