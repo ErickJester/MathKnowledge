@@ -1,0 +1,79 @@
+/* confirmacion.css - Estilo sobrio para confirmar eliminación */
+
+:root {
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --danger: #e74c3c;
+  --neutral: #3498db;
+  --text: #2c3e50;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  --radius: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: var(--danger);
+  text-align: center;
+}
+
+p {
+  background-color: var(--surface);
+  padding: 20px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 18px;
+  text-align: center;
+  max-width: 500px;
+}
+
+strong {
+  color: var(--text);
+}
+
+form, button {
+  margin-top: 25px;
+}
+
+form button,
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background 0.3s ease;
+}
+
+form button {
+  background-color: var(--danger);
+  color: white;
+}
+
+form button:hover {
+  background-color: #c0392b;
+}
+
+button[onclick] {
+  background-color: var(--neutral);
+  color: white;
+}
+
+button[onclick]:hover {
+  background-color: #2d74a6;
+}

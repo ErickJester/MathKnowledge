@@ -1,0 +1,212 @@
+/* ==============================
+   Reset y estilos base
+   ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Variables para el sidebar
+   ============================== */
+:root {
+  --sidebar-expanded: 250px;
+  --sidebar-collapsed: 60px;
+  --sidebar-bg: #1e3d58;
+  --text-light: #fff;
+}
+/* Cuando está colapsado, reducemos */
+html.sidebar-collapsed {
+  --sidebar-expanded: var(--sidebar-collapsed);
+}
+
+/* ==============================
+   Sidebar (fijo y colapsable)
+   ============================== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-expanded);
+  height: 100vh;
+  background: var(--sidebar-bg);
+  color: var(--text-light);
+  overflow: hidden;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+.sidebar h2 {
+  margin: 1rem;
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+html.sidebar-collapsed .sidebar h2 {
+  opacity: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-top: 3rem;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.sidebar ul li a:hover {
+  background: rgba(255,255,255,0.1);
+}
+/* Ocultar solo el texto-label al colapsar */
+html.sidebar-collapsed .sidebar ul li a .label {
+  display: none;
+}
+
+/* ==============================
+   Botón hamburguesa
+   ============================== */
+#sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: calc(var(--sidebar-expanded) - 2.5rem);
+  width: 2rem;
+  height: 2rem;
+  background: var(--sidebar-bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+  z-index: 1100;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 2px;
+  background: var(--text-light);
+  border-radius: 1px;
+  position: relative;
+  transition: transform 0.3s, top 0.3s, opacity 0.3s;
+}
+.hamburger::before { top: -6px; }
+.hamburger::after  { top: 6px; }
+/* Cruz cuando está colapsado */
+html.sidebar-collapsed .hamburger {
+  transform: rotate(90deg);
+}
+html.sidebar-collapsed .hamburger::before,
+html.sidebar-collapsed .hamburger::after {
+  top: 0;
+  opacity: 0;
+}
+
+/* ==============================
+   Contenido general
+   ============================== */
+.content {
+  margin-left: var(--sidebar-expanded);
+  transition: margin-left 0.3s ease;
+  padding: 2rem 1rem 4rem;
+}
+/* Encabezado de bienvenida */
+.content header {
+  background: linear-gradient(135deg,#2c3e50,#3498db);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+.content header h1 {
+  font-size: 2.5rem;
+}
+.content header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+/* Contenedor flex */
+.container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Main (65%) */
+main {
+  flex: 0 0 65%;
+}
+main .card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+/* Aside (30%) */
+aside {
+  flex: 0 0 30%;
+}
+aside .card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+aside h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+aside .social {
+  margin: 1rem 0;
+}
+aside .social span {
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+aside .map {
+  margin-top: 1rem;
+  background: #2c3e50;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ==============================
+   Responsive (móviles)
+   ============================== */
+@media(max-width:768px){
+  .container{
+    flex-direction:column;
+  }
+  main, aside{
+    flex:1 1100%;
+  }
+  #sidebar-toggle{
+    left:calc(var(--sidebar-expanded)-2rem);
+  }
+}

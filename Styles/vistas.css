@@ -1,0 +1,129 @@
+/* super_moderno.css - diseño limpio, elegante y profesional para páginas tipo listado */
+
+:root {
+    --bg: #f1f4f9;
+    --surface: #ffffff;
+    --primary: #2b2d42;
+    --accent: #8d99ae;
+    --highlight: #edf2f4;
+    --text: #2f2f2f;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 25px 40px;
+    font-size: 28px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+nav {
+    background-color: var(--accent);
+    padding: 15px 0;
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffe066;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 30px;
+}
+
+section {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 35px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    transition: transform 0.2s ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: var(--primary);
+    border-left: 6px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--highlight);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+th, td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 15px;
+}
+
+th {
+    background-color: var(--accent);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+tr:hover {
+    background-color: #fdfdfd;
+}
+
+footer, aside {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    padding: 25px;
+    margin-top: 30px;
+}

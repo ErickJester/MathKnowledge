@@ -1,0 +1,84 @@
+/* Estilo limpio y moderno para formularios de registro */
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --primary: #2c3e50;
+  --accent: #2980b9;
+  --border: #dfe6e9;
+  --radius: 10px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+}
+
+form {
+  background-color: var(--surface);
+  padding: 30px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  color: #333;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1e5f8a;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-size: 18px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 5px;
+}

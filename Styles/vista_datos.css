@@ -1,0 +1,88 @@
+/* perfil_usuario.css - Estilo enfocado en visualización de perfil y edición de usuario */
+
+:root {
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --primary: #2c3e50;
+  --accent: #3498db;
+  --text: #2f2f2f;
+  --border: #dce3ea;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  background-color: var(--surface);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1, h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
+}
+
+button, .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #217dbb;
+}
+
+.data-block {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+
+.data-block strong {
+  display: inline-block;
+  width: 150px;
+  color: var(--primary);
+}

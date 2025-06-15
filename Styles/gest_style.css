@@ -1,0 +1,100 @@
+/* gestion_admin.css - Estilo moderno y profesional para páginas de gestión */
+
+:root {
+  --bg: #f4f7fa;
+  --surface: #ffffff;
+  --primary: #1b262c;
+  --accent: #3282b8;
+  --text: #2c2c2c;
+  --border: #dce3ea;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --radius: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 0;
+}
+
+header {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px 40px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+h2 {
+  color: var(--primary);
+  font-size: 22px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 6px;
+  margin-bottom: 20px;
+}
+
+section {
+  background: var(--surface);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 40px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+tr:hover {
+  background-color: #f0f4f8;
+}
+
+button, .btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+button:hover, .btn:hover {
+  background-color: #21618c;
+}

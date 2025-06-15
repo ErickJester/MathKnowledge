@@ -1,0 +1,70 @@
+/* Estilo limpio y compatible para edit_multas.php sin necesidad de clases nuevas */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --primary: #2d3e50;
+  --accent: #3498db;
+  --text: #2c2c2c;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --radius: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+p {
+  max-width: 600px;
+  margin: 15px auto;
+  background: var(--surface);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 16px;
+}
+
+form {
+  text-align: center;
+  margin-top: 30px;
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #2a7dbe;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #1f5e8d;
+}

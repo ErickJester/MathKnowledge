@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Estilos del sidebar fijo (no tocar) -->
+  <link rel="stylesheet" href="Styles/inicio.css" />
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- Botón hamburguesa -->
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">
+    <div class="hamburger"></div>
+  </button>
+
+  <!-- Sidebar colapsable -->
+  <div class="sidebar">
+    <h2>📚 Biblioteca</h2>
+    <ul>
+      <li><a href="Pages/libros.php"><span>📖</span><span class="label">Libros</span></a></li>
+      <li><a href="Pages/revistas.php"><span>📚</span><span class="label">Revistas</span></a></li>
+      <li><a href="Pages/digital.php"><span>💾</span><span class="label">Digitales</span></a></li>
+      <li><a href="Pages/login.php"><span>🔑</span><span class="label">Iniciar sesión</span></a></li>
+      <li><a href="Pages/registro.html"><span>📝</span><span class="label">Registrarse</span></a></li>
+      <li><a href="#"><span>❓</span><span class="label">F.A.Q.</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal + aside -->
+  <div class="content">
+    <!-- Encabezado de bienvenida -->
+    <header>
+      <h1>Bienvenido a la Biblioteca</h1>
+      <p>Explora nuestro catálogo, entérate de eventos y novedades.</p>
+    </header>
+
+    <div class="container">
+      <!-- Secciones principales -->
+      <main>
+        <div class="card">
+          <h2>Próximos Eventos</h2>
+          <p>Espacio para imágenes y descripción de eventos culturales y actividades de la biblioteca.</p>
+        </div>
+        <div class="card">
+          <h2>Novedades</h2>
+          <p>Últimas adquisiciones o libros destacados.</p>
+        </div>
+      </main>
+
+      <!-- Barra lateral derecha -->
+      <aside>
+        <div class="card">
+          <h3>Contacto</h3>
+          <p>Teléfono: 555-555-555</p>
+          <p>Dirección: Calle Principal 123, Ciudad</p>
+          <div class="social">
+            <span>[FB]</span><span>[TW]</span><span>[IG]</span>
+          </div>
+          <div class="map">
+            <em>Mapa de ubicación</em>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Script de colapso del sidebar -->
+  <script>
+    document
+      .getElementById('sidebar-toggle')
+      .addEventListener('click', () => {
+        document.documentElement.classList.toggle('sidebar-collapsed');
+      });
+  </script>
+</body>
+</html>
