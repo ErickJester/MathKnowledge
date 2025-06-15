@@ -71,7 +71,7 @@ if (isset($conn)) {
             <li><a href="prestamos_gestion.php">📅 Préstamos</a></li>
             <li><a href="gestion_multas.php">💸 Multas</a></li>
             <li><a href="Pages/reportes.html">📄 Reportes Mensuales</a></li>
-            <li><a href="../index.html">🔒 Cerrar Sesión</a></li>
+            <li><a href="logout.php">🔒 Cerrar Sesión</a></li>
         </ul>
     </div>
 
