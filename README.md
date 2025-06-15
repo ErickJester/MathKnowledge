@@ -188,5 +188,3 @@ Este fragmento creará la carpeta si no está presente.
 > **Importante:** No incluyas la carpeta `uploads/` ni tus credenciales en el repositorio para evitar problemas de seguridad y portabilidad.
 
 ---
-
-**¡Listo!** Con este README, cualquier desarrollador podrá clonar el proyecto, configurar su entorno y disponer de la funcionalidad de subida de PDFs operativa.
