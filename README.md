@@ -1,151 +1,167 @@
-# Maths Knowledge
+Maths Knowledge
 
-Este proyecto es una **aplicación web educativa** desarrollada con PHP y MySQL, pensada para subir y consultar recursos académicos. A continuación encontrarás un manual de instalación y solución de problemas para garantizar que la funcionalidad de subida de PDFs funcione correctamente al clonar este repositorio.
+🚧 Estado: Este proyecto está en construcción y puede estar incompleto. Algunas funcionalidades están en desarrollo y el contenido está sujeto a cambios.
 
----
+Este proyecto es una aplicación web educativa desarrollada con PHP y MySQL para subir y consultar recursos académicos (PDFs). Este documento describe desde cero el proceso de instalación, configuración y solución de problemas al clonar el repositorio.
 
-## Índice
+Índice
 
-1. [Requisitos](#requisitos)
-2. [Instalación](#instalación)
+Requisitos
 
-   1. [Clonar el repositorio](#clonar-el-repositorio)
-   2. [Configurar el servidor web](#configurar-el-servidor-web)
-   3. [Configurar la base de datos](#configurar-la-base-de-datos)
-   4. [Configurar las credenciales de conexión](#configurar-las-credenciales-de-conexión)
-   5. [Crear y dar permisos a la carpeta `uploads/`](#crear-y-dar-permisos-a-la-carpeta-uploads)
-   6. [Inicializar el directorio de uploads en tiempo de ejecución](#inicializar-el-directorio-de-uploads-en-tiempo-de-ejecución)
-3. [Prueba de subida de PDF](#prueba-de-subida-de-pdf)
-4. [Solución de problemas comunes](#solución-de-problemas-comunes)
-5. [.gitignore recomendado](#gitignore-recomendado)
+Instalación
 
----
+Clonar el repositorio
 
-## Requisitos
+Configurar el servidor web
 
-* **PHP** 7.4 o superior
-* **MySQL** 5.7 o superior
-* **Servidor web** (Apache, Nginx) o paquete tipo **XAMPP**
-* Extensión **mysqli** habilitada
+Crear la base de datos y tablas
 
----
+Configurar las credenciales de conexión
 
-## Instalación
+Crear y dar permisos a la carpeta uploads/
 
-### Clonar el repositorio
+Inicializar el directorio de uploads en tiempo de ejecución
 
-```bash
+Prueba de subida de PDF
+
+Solución de problemas comunes
+
+.gitignore recomendado
+
+Requisitos
+
+PHP 7.4 o superior
+
+MySQL 5.7 o superior
+
+Servidor web (Apache, Nginx) o paquete tipo XAMPP
+
+Extensión mysqli habilitada
+
+Instalación
+
+Clonar el repositorio
+
 git clone https://github.com/tu-usuario/MathsKnowledge.git
 cd MathsKnowledge
-```
 
-### Configurar el servidor web
+Configurar el servidor web
 
-* Si usas XAMPP, asegúrate de que la carpeta del proyecto esté bajo `htdocs/`:
+Si usas XAMPP en macOS, coloca el proyecto dentro de htdocs/, por ejemplo:
 
-  ```bash
-  /Applications/XAMPP/xamppfiles/htdocs/ProyectoFEPI
-  ```
-* Verifica que el **DocumentRoot** de Apache apunte a la carpeta del proyecto.
+/Applications/XAMPP/xamppfiles/htdocs/MathsKnowledge
 
-### Configurar la base de datos
+En Linux (Apache), podría ser /var/www/html/MathsKnowledge.
 
-1. Crea la base de datos y tablas ejecutando los scripts SQL incluidos en:
+Asegúrate de que el DocumentRoot de tu virtual host apunte a la carpeta del proyecto.
 
-   * `base_biblioteca.sql`
-   * `base_biblioteca2.sql`
-2. Agrega la columna para almacenar la ruta del PDF en la tabla `Digital`:
+Crear la base de datos y tablas
 
-   ```sql
-   ALTER TABLE Digital
-   ADD COLUMN archivo_pdf VARCHAR(255) NOT NULL AFTER id_digital;
-   ```
+Accede a tu consola MySQL o phpMyAdmin.
 
-### Configurar las credenciales de conexión
+Crea la base de datos baseMath:
 
-Edite el archivo `includes/conexion.php` con sus datos de acceso MySQL:
+CREATE DATABASE baseMath CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-```php
+Selecciona la base de datos recién creada:
+
+USE baseMath;
+
+Ejecuta el script SQL incluido (baseMath.sql):
+
+SOURCE baseMath.sql;
+
+Agrega la columna para almacenar la ruta del PDF en la tabla Digital:
+
+ALTER TABLE Digital
+  ADD COLUMN archivo_pdf VARCHAR(255) NOT NULL AFTER id_digital;
+
+Inserta los tipos de usuario predeterminados en Tipo_usuario:
+
+INSERT INTO Tipo_usuario (tipo_usuario) VALUES (1),(2),(3);
+
+Configurar las credenciales de conexión
+
+Edita el archivo includes/conexion.php con tus datos de acceso MySQL:
+
 <?php
 $host     = 'localhost';
-$user     = 'tu_usuario';
-$password = 'tu_contraseña';
-dbname     = 'nombre_base_datos';
+$user     = 'TU_USUARIO';
+$password = 'TU_CONTRASEÑA';
+$dbname   = 'baseMath';
 $conn = new mysqli($host, $user, $password, $dbname);
 if (\$conn->connect_error) {
     die('Error de conexión: ' . \$conn->connect_error);
 }
 ?>
-```
 
-### Crear y dar permisos a la carpeta `uploads/`
+Crear y dar permisos a la carpeta uploads/
 
-```bash
-cd /Applications/XAMPP/xamppfiles/htdocs/ProyectoFEPI
-mkdir uploads
-sudo chown -R daemon:daemon uploads   # o www-data:www-data en Linux
+La carpeta uploads/ debe existir en la raíz del proyecto y ser escribible por el proceso PHP. Cada entorno usa un usuario distinto para PHP. Para detectarlo temporalmente, añade este bloque al inicio de procesar_digital.php:
+
+// Depuración de usuario PHP
+echo 'PHP user: ' . trim(shell_exec('whoami'));
+exit;
+
+Al ejecutar el formulario, verás el nombre del usuario. Usa ese usuario para cambiar propiedad y permisos:
+
+cd /ruta/a/MathsKnowledge
+mkdir -p uploads
+sudo chown -R <usuario_php>:<grupo_php> uploads
 chmod 775 uploads
-```
 
-> **Nota:** el usuario que ejecute PHP (`daemon` en macOS XAMPP, `www-data` en Linux) debe tener permisos de escritura.
+Ejemplo: si la salida de whoami es daemon, usarás daemon:daemon; si es www-data, usarás www-data:www-data, etc.
 
-### Inicializar el directorio de uploads en tiempo de ejecución
+Inicializar el directorio de uploads en tiempo de ejecución
 
-Para evitar fallos si la carpeta `uploads/` no existe, se recomienda agregar al inicio de `procesar_digital.php`:
+Para garantizar que uploads/ exista sin intervención manual, agrega al inicio de procesar_digital.php:
 
-```php
 $uploadsDir = __DIR__ . '/../../uploads/';
 if (!is_dir(\$uploadsDir)) {
     mkdir(\$uploadsDir, 0755, true);
 }
-```
 
----
+Este fragmento creará la carpeta si no está presente.
 
-## Prueba de subida de PDF
+Prueba de subida de PDF
 
-1. Accede al formulario de registro de medio digital (ej. `subir-pdf.html`).
-2. Completa los campos y selecciona un archivo `.pdf`.
-3. Envía el formulario.
-4. Verifica que el PDF aparezca en la carpeta `uploads/` y que el mensaje confirme su guardado.
+Abre el formulario de registro de medio digital (p.ej. subir-pdf.html).
 
----
+Completa los campos y selecciona un archivo .pdf.
 
-## Solución de problemas comunes
+Envía el formulario.
 
-1. **`is_writable => false`**
+Verifica que el PDF aparezca en uploads/ y que se muestre un mensaje de éxito.
 
-   * Revisa la propiedad y permisos de `uploads/` con:
+Solución de problemas comunes
 
-     ```bash
-     ls -ld uploads
-     ```
-   * Ajusta propietario y permisos (ve sección anterior).
+Permisos de uploads/ (is_writable => false)
 
-2. **`Unknown column 'archivo_pdf'`**
+Verifica permisos y propietario:
 
-   * Ejecuta el `ALTER TABLE` para agregar la columna.
+ls -ld uploads
 
-3. **Ruta incorrecta en `move_uploaded_file`**
+Asegúrate de que el propietario/grupo coincida con el usuario de PHP, usando el paso de detección anterior.
 
-   * Confirma que `__DIR__ . '/../../uploads/'` resuelva correctamente (usar `realpath()` para depurar).
+Columna archivo_pdf desconocida
 
-4. **Credenciales de base de datos**
+Revisa que hayas ejecutado:
 
-   * Asegúrate de que `includes/conexion.php` apunte a la BD correcta y sin errores.
+ALTER TABLE Digital
+  ADD COLUMN archivo_pdf VARCHAR(255) NOT NULL AFTER id_digital;
 
----
+Errores de ruta
 
-## .gitignore recomendado
+Usa realpath(__DIR__ . '/../../uploads/') dentro de procesar_digital.php para depurar rutas.
 
-```gitignore
+Credenciales incorrectas
+
+Verifica el contenido de includes/conexion.php y asegúrate de que $dbname sea baseMath.
+
+.gitignore recomendado
+
 /uploads/
 /includes/conexion.php
 .DS_Store
-```
 
-> **No** incluyas carpetas de subida ni credenciales en el repositorio para mantener la seguridad y evitar conflictos de permisos.
-
----
-
-**¡Listo!** Sigue estos pasos y cualquier persona podrá clonar tu proyecto desde GitHub y tener la funcionalidad de subida de PDFs operativa.
+Importante: No incluyas la carpeta uploads/ ni tus credenciales en el repositorio para evitar problemas de seguridad y portabilidad.
