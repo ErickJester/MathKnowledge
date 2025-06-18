@@ -1,0 +1,87 @@
+.pro-container {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2rem;
+      margin: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .pro-info {
+      flex: 1 1 350px;
+      background-color: #2b5c87;
+      color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      min-height: 540px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pro-content {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .pro-content h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .pro-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 2;
+    }
+
+    .payment-form {
+      flex: 1 1 350px;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .payment-form input, .payment-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .pro-info h2 {
+      margin-top: 0;
+    }
+
+    .register-button {
+      margin-top: 1rem;
+      display: block;
+      width: 100%;
+      background-color: #2980b9;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .register-button:hover {
+      background-color: #2471a3;
+    }
+
+    .card-icons {
+      display: flex;
+      gap: 5px;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
+
+    .card-icons img {
+      width: 40px;
+    }
