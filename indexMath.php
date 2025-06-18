@@ -1,3 +1,11 @@
+<?php
+// index.php
+session_start();
+// Si el usuario ha iniciado sesión, tomamos su nombre, si no, 'Invitado'
+$saludo = !empty($_SESSION['nombre'])
+    ? htmlspecialchars($_SESSION['nombre'])
+    : 'Invitado';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,8 +35,16 @@
   <nav class="sidebar">
     <h2>🔢 Maths Knowledge</h2>
     <ul>
+      <!-- Saludo dinámico -->
+      <li class="greeting">
+        <a href="Pages/lector.php" class="perfil-link">
+          <span>👤</span>
+          <span class="label">Hola, <?= $saludo ?></span>
+        </a>
+      </li>
+
       <li class="active">
-        <a href="index.html">
+        <a href="index.php">
           <span>🏠</span>
           <span class="label">Página Principal</span>
         </a>
@@ -37,12 +53,6 @@
         <a href="Pages/ver-pdfs.html">
           <span>📖</span>
           <span class="label">Ver PDFs</span>
-        </a>
-      </li>
-      <li>
-        <a href="Pages/login.php">
-          <span>🔑</span>
-          <span class="label">Inicio de sesión</span>
         </a>
       </li>
       <li>
@@ -64,6 +74,12 @@
         </a>
       </li>
       <li>
+        <a href="Pages/login.php">
+          <span>🔑</span>
+          <span class="label">Inicio de sesión</span>
+        </a>
+      </li> 
+      <li>
         <a href="Pages/logout.php">
           <span>🚪</span>
           <span class="label">Cerrar sesión</span>
@@ -79,44 +95,41 @@
       <p>Explora nuestros recursos y mejora tus habilidades en matemáticas.</p>
     </header>
 
-    <!-- … justo debajo de tu <header> … -->
-<div class="subject-nav">
-  <ul class="subject-menu">
-    <!-- Materias -->
-    <li class="dropdown">
-      <a href="#">Análisis Vectorial ▾</a>
-      <ul class="dropdown-content">
-        <li><a href="#">Libros</a></li>
-        <li><a href="Pages/analisis_vectorial_videos.php">Vídeos</a></li>
-        <li><a href="#">Ejercicios</a></li>
-        <li><a href="#">Exámenes</a></li>
+    <!-- Barra de materias y PRO -->
+    <div class="subject-nav">
+      <ul class="subject-menu">
+        <li class="dropdown">
+          <a href="#">Análisis Vectorial ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Libros</a></li>
+            <li><a href="Pages/analisis_vectorial_videos.php">Vídeos</a></li>
+            <li><a href="#">Ejercicios</a></li>
+            <li><a href="#">Exámenes</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Matemáticas Discretas ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Libros</a></li>
+            <li><a href="#">Vídeos</a></li>
+            <li><a href="#">Ejercicios</a></li>
+            <li><a href="#">Exámenes</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Cálculo ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Libros</a></li>
+            <li><a href="#">Vídeos</a></li>
+            <li><a href="#">Ejercicios</a></li>
+            <li><a href="#">Exámenes</a></li>
+          </ul>
+        </li>
+        <li class="pro">
+          <a href="Pages/hacerse-pro.php" class="btn-pro">Hacerse PRO</a>
+        </li>
       </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#">Matemáticas Discretas ▾</a>
-      <ul class="dropdown-content">
-        <li><a href="#">Libros</a></li>
-        <li><a href="#">Vídeos</a></li>
-        <li><a href="#">Ejercicios</a></li>
-        <li><a href="#">Exámenes</a></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#">Cálculo ▾</a>
-      <ul class="dropdown-content">
-        <li><a href="#">Libros</a></li>
-        <li><a href="#">Vídeos</a></li>
-        <li><a href="#">Ejercicios</a></li>
-        <li><a href="#">Exámenes</a></li>
-      </ul>
-    </li>
-
-    <!-- Botón PRO como un ítem más -->
-    <li class="pro">
-      <a href="Pages/hacerse-pro.php" class="btn-pro">Hacerse PRO</a>
-    </li>
-  </ul>
-</div>
+    </div>
 
     <div class="container">
       <main>

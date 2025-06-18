@@ -23,5 +23,5 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirige al inicio público
-header('Location: ../index.html');
+header('Location: ../indexMath.php');
 exit;

@@ -23,7 +23,7 @@ session_start();
   <nav class="sidebar">
     <h2>🔢 Maths Knowledge</h2>
     <ul>
-      <li><a href="../indexMath.html"><span>🏠</span><span class="label">Página Principal</span></a></li>
+      <li><a href="../indexMath.php"><span>🏠</span><span class="label">Página Principal</span></a></li>
       <li><a href="ver-pdfs.php"><span>📖</span><span class="label">Ver PDFs</span></a></li>
       <li><a href="login.php"><span>🔑</span><span class="label">Inicio de sesión</span></a></li>
       <li><a href="subir-pdf.php"><span>📤</span><span class="label">Subir PDF Nuevo</span></a></li>

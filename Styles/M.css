@@ -31,12 +31,14 @@ html.sidebar-collapsed {
    ============================== */
 .sidebar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: var(--sidebar-expanded);
   height: 100vh;
   background: var(--sidebar-bg);
   color: var(--text-light);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   transition: width 0.3s ease;
   z-index: 1000;
 }
@@ -48,10 +50,14 @@ html.sidebar-collapsed {
 html.sidebar-collapsed .sidebar h2 {
   opacity: 0;
 }
+
+/* Hacer scroll sólo dentro de la lista */
 .sidebar ul {
   list-style: none;
   margin-top: 3rem;
   padding: 0;
+  max-height: calc(100vh - 3rem); /* ajustar según alto de tu logo */
+  overflow-y: auto;
 }
 .sidebar ul li {
   margin-bottom: 0.5rem;
@@ -122,13 +128,13 @@ html.sidebar-collapsed .hamburger::after {
   padding: 2rem 1rem 4rem;
 }
 .content header {
-  background: linear-gradient(135deg,#2c3e50,#3498db);
-  color: #fff;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: white;
   padding: 2rem;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  margin-bottom: 1rem; /* reducido para la nueva barra */
+  margin-bottom: 1rem;
 }
 .content header h1 {
   font-size: 2.5rem;
@@ -153,7 +159,7 @@ main {
   flex: 0 0 65%;
 }
 main .card {
-  background: #fff;
+  background: white;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -163,7 +169,7 @@ aside {
   flex: 0 0 30%;
 }
 aside .card {
-  background: #fff;
+  background: white;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -176,43 +182,40 @@ aside h3 {
 /* ==============================
    Responsive (móviles)
    ============================== */
-@media(max-width:768px){
-  .container { flex-direction: column; }
-  main, aside { flex: 1 100%; }
+@media (max-width:768px) {
+  .container {
+    flex-direction: column;
+  }
+  main, aside {
+    flex: 1 100%;
+  }
   #sidebar-toggle {
-    left: calc(var(--sidebar-expanded)-2rem);
+    left: calc(var(--sidebar-expanded) - 2rem);
   }
 }
 
 /* ==============================
    Barra de materias y PRO
    ============================== */
-/* ==============================
-   Barra de materias y PRO (reparto igualitario)
-   ============================== */
+/* Reparto igualitario */
 .subject-nav {
-  background: linear-gradient(135deg,#2c3e50,#3498db);
+  background: linear-gradient(135deg, #2c3e50, #3498db);
   border-radius: 0 0 8px 8px;
   margin-bottom: 2rem;
-  /* quitamos cualquier display:flex aquí, lo tendremos en .subject-menu */
 }
-
 .subject-menu {
   display: flex;
   width: 100%;
   list-style: none;
   margin: 0;
   padding: 0.75rem 1rem;
-  /* ya no usamos justify-content, el flex:1 se encarga */
 }
-
 .subject-menu > li {
-  flex: 1;                  /* cada ítem ocupa el mismo ancho */
-  position: relative;       /* para los dropdowns */
+  flex: 1;
+  position: relative;
 }
-
 .subject-menu > li > a {
-  display: block;           /* para poder centrar el texto */
+  display: block;
   text-align: center;
   color: #fff;
   text-decoration: none;
@@ -221,17 +224,14 @@ aside h3 {
   border-radius: 8px;
   transition: background 0.2s;
 }
-
 .subject-menu > li > a:hover {
   background: rgba(255,255,255,0.1);
 }
-
-/* desplegable dentro de cada materia */
 .subject-menu .dropdown .dropdown-content {
   display: none;
   position: absolute;
   top: calc(100% + 0.25rem);
-  left: 50%;                /* centrado bajo el texto */
+  left: 50%;
   transform: translateX(-50%);
   background: #2c3e50;
   border-radius: 8px;
@@ -241,15 +241,12 @@ aside h3 {
   min-width: 140px;
   z-index: 200;
 }
-
 .subject-menu .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .subject-menu .dropdown .dropdown-content li + li {
   margin-top: 0.25rem;
 }
-
 .subject-menu .dropdown .dropdown-content a {
   display: block;
   color: #fff;
@@ -257,25 +254,18 @@ aside h3 {
   text-decoration: none;
   transition: background 0.2s;
 }
-
 .subject-menu .dropdown .dropdown-content a:hover {
   background: rgba(255,255,255,0.15);
 }
-
-/* Botón PRO también como un <li> más */
 .subject-menu .pro > a {
   background: #1a75bb;
   color: #fff;
-  text-decoration: none;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  
-  transition: background 0.2s;
-}
-.subject-menu > li.pro > a {
   display: block;
   width: 100%;
-  text-align: center;  /* para centrar el texto */
+  text-align: center;
+  transition: background 0.2s;
 }
 .subject-menu .pro > a:hover {
   background: #134f80;
