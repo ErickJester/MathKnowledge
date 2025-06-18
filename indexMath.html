@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -11,11 +11,11 @@
     rel="stylesheet"
   />
 
-  <!-- Estilos del sidebar fijo (no tocar) -->
-  <link rel="stylesheet" href="Styles/inicio.css" />
+  <!-- Estilos del sidebar fijo -->
+  <link rel="stylesheet" href="Styles/in.css" />
 
   <!-- Estilos principales -->
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="Styles/M.css" />
 </head>
 <body>
   <!-- Botón hamburguesa -->
@@ -24,49 +24,54 @@
   </button>
 
   <!-- Sidebar colapsable -->
-  <div class="sidebar">
+  <nav class="sidebar">
     <h2>🔢 Maths Knowledge</h2>
     <ul>
       <li class="active">
         <a href="index.html">
-          <span>🏠</span><span class="label">Pagina Principal</span>
+          <span>🏠</span>
+          <span class="label">Página Principal</span>
         </a>
       </li>
       <li>
         <a href="Pages/ver-pdfs.html">
-          <span>📖</span><span class="label">Ver PDFs</span>
+          <span>📖</span>
+          <span class="label">Ver PDFs</span>
         </a>
       </li>
       <li>
         <a href="Pages/login.php">
-          <span>🔑</span><span class="label">Inicio de sesión</span>
+          <span>🔑</span>
+          <span class="label">Inicio de sesión</span>
         </a>
       </li>
       <li>
         <a href="Pages/subir-pdf.php">
-          <span>📤</span><span class="label">Subir PDF Nuevo</span>
+          <span>📤</span>
+          <span class="label">Subir PDF Nuevo</span>
         </a>
       </li>
       <li>
         <a href="Pages/pdf-viewer.html">
-          <span>🗎</span><span class="label">PDF Viewer</span>
+          <span>🗎</span>
+          <span class="label">PDF Viewer</span>
         </a>
       </li>
       <li>
         <a href="Pages/registro.html">
-          <span>⚙️</span><span class="label">Registro</span>
+          <span>⚙️</span>
+          <span class="label">Registro</span>
         </a>
       </li>
-      <!-- Siempre al fondo -->
       <li>
         <a href="Pages/logout.php">
-          <span>🚪</span><span class="label">Cerrar sesión</span>
+          <span>🚪</span>
+          <span class="label">Cerrar sesión</span>
         </a>
       </li>
     </ul>
-  </div>
+  </nav>
 
-  <!-- Contenido principal + aside -->
   <div class="content">
     <!-- Encabezado de bienvenida -->
     <header>
@@ -74,8 +79,46 @@
       <p>Explora nuestros recursos y mejora tus habilidades en matemáticas.</p>
     </header>
 
+    <!-- … justo debajo de tu <header> … -->
+<div class="subject-nav">
+  <ul class="subject-menu">
+    <!-- Materias -->
+    <li class="dropdown">
+      <a href="#">Análisis Vectorial ▾</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Libros</a></li>
+        <li><a href="Pages/analisis_vectorial_videos.php">Vídeos</a></li>
+        <li><a href="#">Ejercicios</a></li>
+        <li><a href="#">Exámenes</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#">Matemáticas Discretas ▾</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Libros</a></li>
+        <li><a href="#">Vídeos</a></li>
+        <li><a href="#">Ejercicios</a></li>
+        <li><a href="#">Exámenes</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#">Cálculo ▾</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Libros</a></li>
+        <li><a href="#">Vídeos</a></li>
+        <li><a href="#">Ejercicios</a></li>
+        <li><a href="#">Exámenes</a></li>
+      </ul>
+    </li>
+
+    <!-- Botón PRO como un ítem más -->
+    <li class="pro">
+      <a href="Pages/hacerse-pro.php" class="btn-pro">Hacerse PRO</a>
+    </li>
+  </ul>
+</div>
+
     <div class="container">
-      <!-- Secciones principales -->
       <main>
         <div class="card">
           <h2>Próximos Eventos</h2>
@@ -87,7 +130,6 @@
         </div>
       </main>
 
-      <!-- Barra lateral derecha -->
       <aside>
         <div class="card">
           <h3>Información Educativa</h3>
