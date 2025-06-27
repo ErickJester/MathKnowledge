@@ -49,24 +49,9 @@ $saludo = !empty($_SESSION['nombre'])
           <span class="label">Página Principal</span>
         </a>
       </li>
-      <li>
-        <a href="Pages/ver-pdfs.html">
-          <span>📖</span>
-          <span class="label">Ver PDFs</span>
-        </a>
-      </li>
-      <li>
-        <a href="Pages/subir-pdf.php">
-          <span>📤</span>
-          <span class="label">Subir PDF Nuevo</span>
-        </a>
-      </li>
-      <li>
-        <a href="Pages/pdf-viewer.html">
-          <span>🗎</span>
-          <span class="label">PDF Viewer</span>
-        </a>
-      </li>
+      
+     
+      
       <li>
         <a href="Pages/registro.html">
           <span>⚙️</span>

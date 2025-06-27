@@ -35,10 +35,10 @@ session_start();
     <h2>🔢 Maths Knowledge</h2>
     <ul>
       <li><a href="../indexMath.php"><span>🏠</span><span class="label">Página Principal</span></a></li>
-      <li><a href="ver-pdfs.php"><span>📖</span><span class="label">Ver PDFs</span></a></li>
+      
       <li><a href="login.php"><span>🔑</span><span class="label">Inicio de sesión</span></a></li>
-      <li><a href="subir-pdf.php"><span>📤</span><span class="label">Subir PDF Nuevo</span></a></li>
-      <li><a href="pdf-viewer.php"><span>🗎</span><span class="label">PDF Viewer</span></a></li>
+      
+      
       <li><a href="registro.php"><span>⚙️</span><span class="label">Registro</span></a></li>
       <li><a href="logout.php"><span>🚪</span><span class="label">Cerrar sesión</span></a></li>
     </ul>
