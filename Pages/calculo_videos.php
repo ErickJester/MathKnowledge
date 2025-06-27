@@ -47,7 +47,7 @@ session_start();
   <div class="content">
     <!-- Encabezado de bienvenida -->
     <header>
-      <h1>Vídeos de Análisis Vectorial</h1>
+      <h1>Vídeos de Calculo</h1>
       <p>Explora y busca vídeos sobre los conceptos de vectores.</p>
     </header>
 
@@ -73,10 +73,10 @@ session_start();
           </ul>
         </li>
         <li class="dropdown">
-          <a href="videos_calculo.php">Cálculo ▾</a>
+          <a href="calculo_videos.php">Cálculo ▾</a>
           <ul class="dropdown-content">
-            <li><a href="libros_calculo.php">Libros</a></li>
-            <li><a href="videos_calculo.php">Vídeos</a></li>
+            <li><a href="calculo_libros.php">Libros</a></li>
+            <li><a href="calculo_videos.php">Vídeos</a></li>
             <li><a href="ejercicios_calculo.php">Ejercicios</a></li>
             <li><a href="examenes_calculo.php">Exámenes</a></li>
           </ul>

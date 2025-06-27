@@ -1,17 +1,31 @@
 <?php
-// Pages/analisis_vectorial_videos.php
+// Pages/analisis_vectorial_libros.php
 session_start();
 // if (empty($_SESSION['usuario_id'])) {
 //     header('Location: login.php');
 //     exit;
 // }
+
+// Ruta al directorio de uploads para Análisis Vectorial
+$dir = __DIR__ . '/../uploads/Analisis vectorial/libros';
+
+// Lee los archivos .pdf dentro del directorio
+$files = [];
+if (is_dir($dir)) {
+    foreach (scandir($dir) as $f) {
+        if (is_file("$dir/$f") && strtolower(pathinfo($f, PATHINFO_EXTENSION)) === 'pdf') {
+            $files[] = $f;
+        }
+    }
+    sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vídeos de Análisis Vectorial | Maths Knowledge</title>
+  <title>Libros de Análisis Vectorial | Maths Knowledge</title>
 
   <!-- Google Fonts -->
   <link
@@ -36,8 +50,8 @@ session_start();
     <h2>🔢 Maths Knowledge</h2>
     <ul>
       <li><a href="../indexMath.php"><span>🏠</span><span class="label">Página Principal</span></a></li>
-      <li class="active"><a href="analisis_vectorial_videos.php"><span>🎥</span><span class="label">Vídeos</span></a></li>
-      <li><a href="analisis_vectorial_libros.php"><span>📖</span><span class="label">Libros</span></a></li>
+      <li><a href="analisis_vectorial_videos.php"><span>🎥</span><span class="label">Vídeos</span></a></li>
+      <li class="active"><a href="analisis_vectorial_libros.php"><span>📖</span><span class="label">Libros</span></a></li>
       <li><a href="analisis_vectorial_ejercicios.php"><span>✏️</span><span class="label">Ejercicios</span></a></li>
       <li><a href="analisis_vectorial_examenes.php"><span>📝</span><span class="label">Exámenes</span></a></li>
       <li><a href="logout.php"><span>🚪</span><span class="label">Cerrar sesión</span></a></li>
@@ -47,8 +61,8 @@ session_start();
   <div class="content">
     <!-- Encabezado de bienvenida -->
     <header>
-      <h1>Vídeos de Análisis Vectorial</h1>
-      <p>Explora y busca vídeos sobre los conceptos de vectores.</p>
+      <h1>Libros de Análisis Vectorial</h1>
+      <p>Explora y descarga los PDFs disponibles.</p>
     </header>
 
     <!-- Barra de materias (reparto igualitario) -->
@@ -73,10 +87,10 @@ session_start();
           </ul>
         </li>
         <li class="dropdown">
-          <a href="videos_calculo.php">Cálculo ▾</a>
+          <a href="calculo_videos.php">Cálculo ▾</a>
           <ul class="dropdown-content">
-            <li><a href="libros_calculo.php">Libros</a></li>
-            <li><a href="videos_calculo.php">Vídeos</a></li>
+            <li><a href="calculo_libros.php">Libros</a></li>
+            <li><a href="calculo_videos.php">Vídeos</a></li>
             <li><a href="ejercicios_calculo.php">Ejercicios</a></li>
             <li><a href="examenes_calculo.php">Exámenes</a></li>
           </ul>
@@ -88,59 +102,40 @@ session_start();
     </div>
 
     <div class="container">
-      <!-- Main (65%) con buscador y grid de vídeos -->
+      <!-- Main (65%) con buscador y grid de libros -->
       <main>
         <div class="card">
-          <h2>Buscar Vídeos</h2>
+          <h2>Buscar Libros</h2>
           <input
             type="text"
-            id="video-search"
+            id="file-search"
             placeholder="Escribe un título..."
             style="width:100%; padding:8px; font-size:16px;"
           />
         </div>
 
-        <div class="video-grid" style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
-          <div class="video-item" style="flex:1 1 260px;">
-            <h4>Qué es un vector y sus características</h4>
-            <iframe
-              width="100%"
-              height="200"
-              src="https://www.youtube.com/embed/IrTeyyzerjI"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="video-item" style="flex:1 1 260px;">
-            <h4>Representación gráfica de vectores</h4>
-            <iframe
-              width="100%"
-              height="200"
-              src="https://www.youtube.com/embed/eJyqrR6eBTE"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="video-item" style="flex:1 1 260px;">
-            <h4>Suma y resta de vectores</h4>
-            <iframe
-              width="100%"
-              height="200"
-              src="https://www.youtube.com/embed/nQnxMF1Jwso"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="video-item" style="flex:1 1 260px;">
-            <h4>Multiplicación de un vector por un escalar</h4>
-            <iframe
-              width="100%"
-              height="200"
-              src="https://www.youtube.com/embed/fjizt35knGs"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
-          </div>
+        <div class="file-grid" style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+          <?php if (empty($files)): ?>
+            <div style="width:100%; text-align:center; padding:2rem; background:#fff; border-radius:8px;">
+              No se encontraron libros.
+            </div>
+          <?php else: ?>
+            <?php foreach ($files as $file): ?>
+              <div
+                class="file-item"
+                style="flex:1 1 260px; background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between;"
+              >
+                <h4 style="margin-bottom:0.5rem;"><?= htmlspecialchars(pathinfo($file, PATHINFO_FILENAME)) ?></h4>
+                <a
+                  href="../uploads/Analisis%20vectorial/<?= rawurlencode($file) ?>"
+                  download
+                  style="text-decoration:none; color:#3498db; font-weight:500; align-self:flex-end;"
+                >
+                  Descargar
+                </a>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </main>
 
@@ -160,12 +155,12 @@ session_start();
       .addEventListener('click', () =>
         document.documentElement.classList.toggle('sidebar-collapsed')
       );
-    document.getElementById('video-search')
+    document.getElementById('file-search')
       .addEventListener('input', e => {
         const q = e.target.value.toLowerCase();
-        document.querySelectorAll('.video-item').forEach(el => {
+        document.querySelectorAll('.file-item').forEach(el => {
           el.style.display = el.querySelector('h4').textContent.toLowerCase().includes(q)
-            ? 'block'
+            ? 'flex'
             : 'none';
         });
       });

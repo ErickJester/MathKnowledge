@@ -47,7 +47,7 @@ session_start();
   <div class="content">
     <!-- Encabezado de bienvenida -->
     <header>
-      <h1>Vídeos de Análisis Vectorial</h1>
+      <h1>Vídeos de Matematicas Discretas</h1>
       <p>Explora y busca vídeos sobre los conceptos de vectores.</p>
     </header>
 

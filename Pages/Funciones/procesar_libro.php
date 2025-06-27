@@ -1,31 +1,62 @@
 <?php
-include('../../includes/conexion.php');
+// Pages/Funciones/procesar_libro.php
+session_start();
 
-$titulo = $_POST['titulo'];
-$autor = $_POST['autor'];
-$fecha = $_POST['fecha_registro'];
-$cantidad = $_POST['cantidad'];
-$genero = $_POST['genero'];
-$editorial = $_POST['editorial'];
-$edicion = $_POST['edicion'];
-$calificacion = $_POST['calificacion'] ?? NULL;
-
-$conn->begin_transaction();
-
-try {
-    $stmt1 = $conn->prepare("INSERT INTO Material (titulo, autor, fecha_registro, cantidad, genero) VALUES (?, ?, ?, ?, ?)");
-    $stmt1->bind_param("sssds", $titulo, $autor, $fecha, $cantidad, $genero);
-    $stmt1->execute();
-    $id_material = $conn->insert_id;
-
-    $stmt2 = $conn->prepare("INSERT INTO Libro (id_libro, edicion, editorial, calificacion) VALUES (?, ?, ?, ?)");
-    $stmt2->bind_param("isss", $id_material, $edicion, $editorial, $calificacion);
-    $stmt2->execute();
-
-    $conn->commit();
-    echo "Libro registrado correctamente.";
-} catch (Exception $e) {
-    $conn->rollback();
-    echo "Error: " . $e->getMessage();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../Pages/subir_libro.php');
+    exit;
 }
-?>
+
+$nombre  = trim($_POST['nombre_libro'] ?? '');
+$materia = $_POST['materia'] ?? '';
+$file    = $_FILES['pdf_file'] ?? null;
+
+// Validar campos
+if (!$file || $nombre === '' || $materia === '') {
+    die('Faltan datos.');
+}
+
+if ($file['error'] !== UPLOAD_ERR_OK) {
+    die("Error de subida (code {$file['error']}).");
+}
+
+// Solo PDF
+$ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+if ($ext !== 'pdf') {
+    die('Solo PDF permitido.');
+}
+
+$map = [
+    'Analisis Vectorial'     => 'Analisis Vectorial/Libros',
+    'Matematicas Discretas'  => 'Matematicas Discretas/Libros',
+    'Calculo'                => 'Calculo/Libros',
+];
+if (!isset($map[$materia])) {
+    die('Materia inválida.');
+}
+
+$uploadDir = __DIR__ . '/../../uploads/' . $map[$materia] . '/';
+
+// ** DEBUG **
+var_dump($file);
+echo "Destino: $uploadDir\n";
+echo "is_dir: " . (is_dir($uploadDir) ? 'sí' : 'no') . "\n";
+echo "is_writable: " . (is_writable($uploadDir) ? 'sí' : 'no') . "\n";
+// ** FIN DEBUG **
+
+if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
+    die('No se pudo crear carpeta.');
+}
+
+$safeName  = preg_replace('/[^a-zA-Z0-9_-]/', '_', $nombre);
+$finalName = $safeName . '_' . time() . '.pdf';
+$targetPath= $uploadDir . $finalName;
+
+if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
+    $err = error_get_last();
+    var_dump($err);
+    die('Error al guardar el archivo. Checa los detalles.');
+}
+
+header('Location: ../subir_libro.php?ok=1');
+exit;
